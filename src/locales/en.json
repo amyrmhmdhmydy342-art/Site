@@ -1,0 +1,47 @@
+{
+  "common": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "admin": "Admin Panel",
+    "logout": "Logout",
+    "credits": "Credits",
+    "generate": "Generate Logo",
+    "history": "History",
+    "favorites": "Favorites",
+    "leaderboard": "Leaderboard",
+    "referrals": "Referrals"
+  },
+  "auth": {
+    "email": "Email",
+    "password": "Password",
+    "continue_with_google": "Continue with Google",
+    "no_account": "Don't have an account?",
+    "have_account": "Already have an account?"
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "available_credits": "Available Credits",
+    "buy_credits": "Buy Credits",
+    "referral_link": "Your Referral Link",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "referral_stats": "Referral Stats",
+    "total_valid": "Total Valid Referrals",
+    "credits_earned": "Credits Earned"
+  },
+  "generator": {
+    "prompt_placeholder": "Describe your dream logo...",
+    "generating": "Generating...",
+    "generate_btn": "Generate (1 Credit)",
+    "share": "Share",
+    "download": "Download"
+  },
+  "leaderboard": {
+    "title": "Top Referrers",
+    "rank": "Rank",
+    "user": "User",
+    "referrals": "Referrals",
+    "rewards": "Rewards"
+  }
+}

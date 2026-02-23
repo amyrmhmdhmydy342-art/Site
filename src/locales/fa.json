@@ -1,0 +1,47 @@
+{
+  "common": {
+    "login": "ورود",
+    "signup": "ثبت نام",
+    "dashboard": "داشبورد",
+    "admin": "پنل مدیریت",
+    "logout": "خروج",
+    "credits": "اعتبار",
+    "generate": "تولید لوگو",
+    "history": "تاریخچه",
+    "favorites": "علاقه‌مندی‌ها",
+    "leaderboard": "جدول امتیازات",
+    "referrals": "معرفی‌ها"
+  },
+  "auth": {
+    "email": "ایمیل",
+    "password": "رمز عبور",
+    "continue_with_google": "ادامه با گوگل",
+    "no_account": "حساب کاربری ندارید؟",
+    "have_account": "قبلاً ثبت نام کرده‌اید؟"
+  },
+  "dashboard": {
+    "welcome": "خوش آمدید",
+    "available_credits": "اعتبار موجود",
+    "buy_credits": "خرید اعتبار",
+    "referral_link": "لینک معرفی شما",
+    "copy": "کپی",
+    "copied": "کپی شد!",
+    "referral_stats": "آمار معرفی",
+    "total_valid": "معرفی‌های معتبر",
+    "credits_earned": "اعتبار کسب شده"
+  },
+  "generator": {
+    "prompt_placeholder": "لوگوی رویایی خود را توصیف کنید...",
+    "generating": "در حال تولید...",
+    "generate_btn": "تولید (۱ اعتبار)",
+    "share": "اشتراک‌گذاری",
+    "download": "دانلود"
+  },
+  "leaderboard": {
+    "title": "برترین معرف‌ها",
+    "rank": "رتبه",
+    "user": "کاربر",
+    "referrals": "معرفی‌ها",
+    "rewards": "جوایز"
+  }
+}
