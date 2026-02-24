@@ -12,6 +12,7 @@ import {
 } from "../components/ui/card";
 import { toast } from "sonner";
 import { motion } from "motion/react";
+import { useAuth } from "../store/useAuth";
 
 export default function Login() {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const { setDemoMode } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +49,12 @@ export default function Login() {
       },
     });
     if (error) toast.error(error.message);
+  };
+
+  const handleDemoLogin = () => {
+    setDemoMode();
+    toast.success("Welcome to the Loguvo Demo!");
+    navigate("/dashboard");
   };
 
   return (
@@ -99,13 +107,23 @@ export default function Login() {
             <div className="h-px bg-zinc-200 flex-1"></div>
           </div>
 
-          <Button
-            variant="outline"
-            className="w-full mt-4"
-            onClick={handleGoogleLogin}
-          >
-            {t("auth.continue_with_google")}
-          </Button>
+          <div className="space-y-3 mt-4">
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={handleGoogleLogin}
+            >
+              {t("auth.continue_with_google")}
+            </Button>
+            
+            <Button
+              variant="secondary"
+              className="w-full bg-emerald-100 text-emerald-800 hover:bg-emerald-200 border-none"
+              onClick={handleDemoLogin}
+            >
+              Try Demo Mode
+            </Button>
+          </div>
 
           <p className="text-center mt-6 text-sm text-zinc-600">
             {t("auth.no_account")}{" "}

@@ -45,6 +45,11 @@ export default function Layout() {
   };
 
   const handleLogout = async () => {
+    if (useAuth.getState().isDemo) {
+      useAuth.setState({ isDemo: false, user: null, profile: null });
+      navigate("/");
+      return;
+    }
     await supabase.auth.signOut();
     navigate("/");
   };
@@ -70,7 +75,7 @@ export default function Layout() {
               <Wand2 className="w-5 h-5 text-white" />
             </div>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 to-zinc-600">
-              AI Logo Studio
+              Loguvo
             </span>
           </Link>
 

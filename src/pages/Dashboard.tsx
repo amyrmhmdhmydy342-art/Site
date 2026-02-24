@@ -29,6 +29,7 @@ export default function Dashboard() {
   }, [user]);
 
   const fetchLogos = async () => {
+    if (useAuth.getState().isDemo) return;
     const { data } = await supabase
       .from("logos")
       .select("*")
@@ -39,6 +40,7 @@ export default function Dashboard() {
   };
 
   const fetchReferralStats = async () => {
+    if (useAuth.getState().isDemo) return;
     // In a real app, this would be a custom RPC or aggregated query
     const { count } = await supabase
       .from("referrals")

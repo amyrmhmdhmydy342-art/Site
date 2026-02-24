@@ -46,32 +46,34 @@ export default function LogoCanvas() {
       const seed = encodeURIComponent(prompt + Math.random().toString());
       const fakeLogoUrl = `https://api.dicebear.com/9.x/shapes/svg?seed=${seed}&backgroundColor=0a0a0a,1a1a1a,ffffff&shape1Color=0a0a0a,1a1a1a,ffffff,4f46e5,06b6d4,f43f5e`;
 
-      // 3. Save to Supabase
-      const { data: logo, error } = await supabase
-        .from("logos")
-        .insert({
+      if (!useAuth.getState().isDemo) {
+        // 3. Save to Supabase
+        const { data: logo, error } = await supabase
+          .from("logos")
+          .insert({
+            user_id: user.id,
+            prompt,
+            image_url: fakeLogoUrl,
+          })
+          .select()
+          .single();
+
+        if (error) throw error;
+
+        // 4. Record transaction
+        await supabase.from("credit_transactions").insert({
           user_id: user.id,
-          prompt,
-          image_url: fakeLogoUrl,
-        })
-        .select()
-        .single();
+          amount: -1,
+          type: "spent",
+          reason: "Generated logo",
+        });
 
-      if (error) throw error;
-
-      // 4. Record transaction
-      await supabase.from("credit_transactions").insert({
-        user_id: user.id,
-        amount: -1,
-        type: "spent",
-        reason: "Generated logo",
-      });
-
-      // 5. Update user credits in DB
-      await supabase
-        .from("users")
-        .update({ credits: newCredits })
-        .eq("id", user.id);
+        // 5. Update user credits in DB
+        await supabase
+          .from("users")
+          .update({ credits: newCredits })
+          .eq("id", user.id);
+      }
 
       setGeneratedLogo(fakeLogoUrl);
       toast.success("Logo generated successfully!");
@@ -89,7 +91,7 @@ export default function LogoCanvas() {
     if (!generatedLogo || !profile) return;
 
     const shareUrl = `${window.location.origin}/signup?ref=${profile.referral_code}`;
-    const text = `Check out this logo I made with AI Logo Studio! Create yours and get free credits: ${shareUrl}`;
+    const text = `Check out this logo I made with Loguvo! Create yours and get free credits: ${shareUrl}`;
 
     if (navigator.share) {
       navigator
@@ -176,7 +178,7 @@ export default function LogoCanvas() {
               />
               {/* Watermark overlay */}
               <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-md text-white/90 text-[10px] px-2.5 py-1 rounded-full font-medium tracking-wide">
-                Made with AI Logo Studio
+                Made with Loguvo
               </div>
 
               {/* Hover Actions */}
